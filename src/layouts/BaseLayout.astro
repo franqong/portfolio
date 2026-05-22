@@ -1,0 +1,104 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/fav-light.svg.svg" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/svg+xml" href="/fav-dark.svg" media="(prefers-color-scheme: dark)" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&family=Inter:wght@400&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+	</head>
+	<body class="antialiased">
+    <div id="custom-cursor">
+      <svg viewBox="0 0 6.35 6.35" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(-26.879723,-115.16664)">
+          <path
+            d="m 30.206022,121.50154 c -0.198906,-0.0491 -0.329888,-0.2002 -0.329888,-0.3804 0,-0.23149 0.22483,-0.37128 0.379189,-0.23574 0.108443,0.0952 0.07259,0.26528 -0.06123,0.29038 -0.04839,0.009 -0.05415,0.0246 -0.02467,0.0667 0.02898,0.0414 0.08412,0.065 0.15112,0.0647 0.217475,-9.1e-4 0.349526,-0.25038 0.283303,-0.53502 -0.04307,-0.18514 -0.174484,-0.38993 -0.460077,-0.71698 -0.261419,-0.29938 -0.306934,-0.36621 -0.34921,-0.51279 l -0.02656,-0.0921 -0.07681,0.0711 c -0.203322,0.18825 -0.359278,0.42251 -0.786804,1.18183 -0.0416,0.0739 -0.03397,0.0946 -0.08701,-0.23607 -0.02086,-0.13009 -0.0792,-0.48861 -0.129626,-0.79671 -0.127872,-0.78123 -0.173582,-1.06697 -0.368411,-2.30299 -0.119798,-0.76001 -0.149979,-0.948 -0.211846,-1.31955 -0.0342,-0.20539 -0.08184,-0.48241 -0.105857,-0.61558 -0.02402,-0.13318 -0.04203,-0.25209 -0.04002,-0.26426 0.0025,-0.015 0.101542,0.0885 0.308641,0.32264 0.805024,0.91001 1.857256,2.06249 2.572119,2.81715 0.57248,0.60435 0.833801,0.80348 1.178252,0.89786 l 0.127357,0.0349 -0.255196,-0.005 c -0.183978,-0.003 -0.323279,-0.0135 -0.499165,-0.0371 -0.329405,-0.0441 -0.54029,-0.0579 -0.677224,-0.0442 -0.279694,0.0279 -0.409193,0.11841 -0.408187,0.28518 7.23e-4,0.12044 0.0325,0.18013 0.279843,0.52568 0.266513,0.37233 0.35861,0.57129 0.379005,0.81876 0.03616,0.43885 -0.363365,0.81524 -0.761052,0.71697 z m -0.943686,-1.75966 c 0.195473,-0.30743 0.447193,-0.55872 0.676041,-0.67489 0.0951,-0.0483 0.248887,-0.0949 0.372658,-0.113 0.134006,-0.0196 0.489101,-0.008 0.688584,0.0226 0.08045,0.0123 0.146004,0.0194 0.145681,0.0158 -3.18e-4,-0.004 -0.02994,-0.0301 -0.06584,-0.0588 -0.121469,-0.0971 -0.284276,-0.25696 -0.510814,-0.50157 -0.512693,-0.55361 -1.291399,-1.44714 -1.98012,-2.2721 -0.108605,-0.13009 -0.202826,-0.24213 -0.20938,-0.24897 -0.01364,-0.0143 -0.01603,-0.0283 0.05212,0.30499 0.0273,0.13352 0.09995,0.48923 0.161424,0.79048 0.06148,0.30126 0.181817,0.88666 0.267421,1.30088 0.08561,0.41423 0.190975,0.93379 0.234156,1.15457 0.04318,0.22079 0.08132,0.4014 0.08474,0.40135 0.0034,-4e-5 0.04091,-0.0546 0.08332,-0.12134 z"
+            fill="currentColor"></path>
+        </g>
+      </svg>
+    </div>
+    
+		<slot />
+
+    <script>
+      // Cursor custom
+      const cursor = document.getElementById('custom-cursor');
+      const interactives = document.querySelectorAll('.interactive-el, a, button, input, textarea, h2, h3, h4');
+
+      document.addEventListener('mousemove', (e) => {
+        if (cursor) {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+          if (!cursor.classList.contains('visible')) {
+            cursor.classList.add('visible');
+          }
+        }
+      });
+
+      document.addEventListener('mouseleave', () => {
+        cursor?.classList.remove('visible');
+      });
+
+      document.addEventListener('mouseenter', () => {
+        cursor?.classList.add('visible');
+      });
+
+      interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursor?.classList.add('hovering');
+          // Solo blink en links o cosas interactivas
+          if (el.tagName === 'A' || el.tagName === 'BUTTON' || el.classList.contains('interactive-el')) {
+             cursor?.classList.add('blinking');
+          }
+        });
+        el.addEventListener('mouseleave', () => {
+          cursor?.classList.remove('hovering');
+          cursor?.classList.remove('blinking');
+        });
+      });
+
+      // Scroll Spy para el nav
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        const scrollPos = window.scrollY + 120; // Offset para un trigger más natural
+        const windowHeight = window.innerHeight;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const isBottom = window.scrollY + windowHeight >= scrollHeight - 50;
+
+        if (isBottom) {
+          // Si se llega al fondo, se marca la última sección
+          current = sections[sections.length - 1].getAttribute('id') || '';
+        } else {
+          sections.forEach(section => {
+            const sectionTop = (section as HTMLElement).offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+              current = section.getAttribute('id') || '';
+            }
+          });
+        }
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+    </script>
+	</body>
+</html>
