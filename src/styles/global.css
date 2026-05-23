@@ -330,6 +330,9 @@ h2.interactive-el:hover, h3.interactive-el:hover, h4.interactive-el:hover {
   object-fit: cover;
   transition: transform 0.7s ease-out;
   filter: grayscale(0.5);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .avatar:hover img {
@@ -421,13 +424,17 @@ h2.interactive-el:hover, h3.interactive-el:hover, h4.interactive-el:hover {
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  transition: transform 0.7s ease-out;
-  filter: grayscale(1);
+  transition: transform 0.7s cubic-bezier(0.33, 1, 0.68, 1);
+  filter: grayscale(0.7);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .project-card:hover img {
-  transform: scale(1.05);
-  filter: grayscale(0);
+  transform: scale(1.08);
+  filter: grayscale(0.3);
 }
 
 footer {

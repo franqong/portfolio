@@ -31,10 +31,10 @@ const {
 
 <article class="project-card interactive-el">
   <div
-    class="font-label-mono text-on-surface-variant mb-4 flex justify-between"
+    class="font-label-mono text-on-surface-variant mb-4 flex justify-between items-center"
   >
     <span>{number} / {category}</span>
-    <span>{year}</span>
+    <span style="white-space: nowrap;">{year}</span>
   </div>
   <div class="project-image-container ghost-edge">
     <img src={image} alt={title} />
@@ -189,8 +189,8 @@ const {
       <span class="badge-text">CODE</span>
     </a>
     <a
-      href={preview}
-      target="_blank"
+      href={preview === "#" ? "javascript:void(0)" : preview}
+      target={preview === "#" ? "_self" : "_blank"}
       class="badge-action interactive-el no-underline"
     >
       <svg
