@@ -68,14 +68,35 @@
   const langEsIcon = document.getElementById('lang-es-icon');
   const langEnIcon = document.getElementById('lang-en-icon');
 
+  // Initialize theme icon based on current document class
+  if (document.documentElement.classList.contains('light')) {
+    moonIcon?.classList.remove('visible');
+    sunIcon?.classList.add('visible');
+  }
+
+  // Initialize language icon based on browser language
+  if (navigator.language && navigator.language.toLowerCase().startsWith('en')) {
+    langEsIcon?.classList.remove('visible');
+    langEnIcon?.classList.add('visible');
+  }
+
   themeToggle?.addEventListener('click', () => {
-    const isDark = moonIcon?.classList.contains('visible');
-    if (isDark) {
-      moonIcon?.classList.remove('visible');
-      sunIcon?.classList.add('visible');
-    } else {
+    const isLight = document.documentElement.classList.contains('light');
+    
+    if (isLight) {
+      // Switch to dark
+      document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
       sunIcon?.classList.remove('visible');
       moonIcon?.classList.add('visible');
+    } else {
+      // Switch to light
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+      localStorage.setItem('theme', 'light');
+      moonIcon?.classList.remove('visible');
+      sunIcon?.classList.add('visible');
     }
   });
 

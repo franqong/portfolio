@@ -1,6 +1,6 @@
 /* Sonic Minimalism Design System */
-:root {
-  /* Colors - Base */
+:root, :root.dark {
+  /* Colors - Base (Dark Theme) */
   --color-surface: #08132a;
   --color-surface-dim: #08132a;
   --color-surface-bright: #2f3952;
@@ -35,8 +35,27 @@
   --color-error-container: #93000a;
   --color-on-error-container: #ffdad6;
   --color-background: #030303;
-  --color-gradient-bottom: #06090C; /* #070c16 */
+  --color-gradient-bottom: #06090C;
   --color-on-background: #d9e2ff;
+  --color-grid-lines: rgba(100, 255, 218, 0.02);
+  --color-custom-cursor: white;
+  --color-staff-line: rgba(255, 255, 255, 0.05);
+  
+  /* Interactive & Badges */
+  --color-interactive-hover: #ffffff;
+  --hover-brightness: brightness(1.2);
+  --color-badge-available-bg: rgba(100, 255, 218, 0.05);
+  --color-badge-available-border: rgba(100, 255, 218, 0.3);
+  --color-badge-available-dot: #64ffda;
+  
+  --color-badge-tech-bg: rgba(0, 0, 0, 0.6);
+  --color-badge-tech-border: rgba(255, 255, 255, 0.05);
+  --color-badge-tech-hover-bg: rgba(3, 9, 17, 0.6);
+  --color-badge-tech-hover-border: rgba(201, 198, 197, 0.2);
+  
+  --color-badge-action-bg: #161616;
+  --color-badge-action-border: rgba(255, 255, 255, 0.05);
+  --color-badge-action-hover-bg: #181818;
 
   /* Typography Scale */
   --font-display-lg-size: 72px;
@@ -84,6 +103,68 @@
   --radius-full: 0.75rem;
 }
 
+:root.light {
+  /* Colors - Base (Light Theme) */
+  --color-surface: #e6e9ee;
+  --color-surface-dim: #dadde3;
+  --color-surface-bright: #f0f3f8;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f5f7fa;
+  --color-surface-container: #eaedf2;
+  --color-surface-container-high: #e0e3e9;
+  --color-surface-container-highest: #d6d9df;
+  --color-on-surface: #1a202c;
+  --color-on-surface-variant: #4a5568;
+  --color-inverse-surface: #2d3748;
+  --color-inverse-on-surface: #e2e8f0;
+  --color-outline: #a0aec0;
+  --color-outline-variant: #cbd5e0;
+  --color-surface-tint: #4a5568;
+  --color-primary: #4a5568;
+  --color-accent: #000000;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #e2e8f0;
+  --color-on-primary-container: #1a202c;
+  --color-inverse-primary: #a0aec0;
+  --color-secondary: #4a5568;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #edf2f7;
+  --color-on-secondary-container: #2d3748;
+  --color-tertiary: #718096;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #e2e8f0;
+  --color-on-tertiary-container: #2d3748;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #410002;
+  
+  /* Soft, non-pure white background */
+  --color-background: #f0f2f5; 
+  --color-gradient-bottom: #e4e7ec;
+  --color-on-background: #1a202c;
+  
+  --color-grid-lines: rgba(0, 0, 0, 0.04);
+  --color-custom-cursor: #1a202c;
+  --color-staff-line: rgba(0, 0, 0, 0.08);
+
+  /* Interactive & Badges (Light Theme) */
+  --color-interactive-hover: #000000;
+  --hover-brightness: none;
+  --color-badge-available-bg: rgba(15, 118, 110, 0.05); /* Emerald 700 */
+  --color-badge-available-border: rgba(15, 118, 110, 0.3);
+  --color-badge-available-dot: #0f766e;
+  
+  --color-badge-tech-bg: rgba(0, 0, 0, 0.04);
+  --color-badge-tech-border: rgba(0, 0, 0, 0.1);
+  --color-badge-tech-hover-bg: rgba(0, 0, 0, 0.08);
+  --color-badge-tech-hover-border: rgba(0, 0, 0, 0.2);
+  
+  --color-badge-action-bg: #ffffff;
+  --color-badge-action-border: rgba(0, 0, 0, 0.15);
+  --color-badge-action-hover-bg: #f8fafc;
+}
+
 /* Global Reset & Base Styles */
 * {
   box-sizing: border-box;
@@ -96,9 +177,10 @@ html {
   background-color: var(--color-background);
   background-image: 
     linear-gradient(to bottom, var(--color-background), var(--color-gradient-bottom)),
-    repeating-linear-gradient(to bottom, transparent, transparent 31px, rgba(100, 255, 218, 0.02) 31px, rgba(100, 255, 218, 0.02) 32px);
+    repeating-linear-gradient(to bottom, transparent, transparent 31px, var(--color-grid-lines) 31px, var(--color-grid-lines) 32px);
   background-size: 100% 100%, 100% 160px;
   background-attachment: fixed;
+  transition: background-color 0.5s ease, background-image 0.5s ease;
 }
 
 body {
@@ -109,6 +191,7 @@ body {
   overflow-x: hidden;
   line-height: 1.6;
   cursor: none !important;
+  transition: color 0.5s ease;
 }
 
 /* Noise Effect */
@@ -144,7 +227,7 @@ a, button, input, textarea, .interactive-el, [role="button"] {
   left: 0;
   width: 22px;
   height: 22px;
-  color: white;
+  color: var(--color-custom-cursor);
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
@@ -177,14 +260,13 @@ a, button, input, textarea, .interactive-el, [role="button"] {
 }
 
 /* Hover Brightening Effects */
-.interactive-el, a, button, h2, h3, h4 {
+.interactive-el, a, button {
   transition: color 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
 }
 
-.interactive-el:hover, a:hover, button:hover, 
-h2.interactive-el:hover, h3.interactive-el:hover, h4.interactive-el:hover {
-  color: #ffffff !important;
-  filter: brightness(1.2);
+.interactive-el:hover, a:hover, button:hover {
+  color: var(--color-interactive-hover) !important;
+  filter: var(--hover-brightness);
 }
 
 /* Layout Utilities */
@@ -346,8 +428,8 @@ h2.interactive-el:hover, h3.interactive-el:hover, h4.interactive-el:hover {
   gap: 8px;
   padding: 6.5px 12px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(100, 255, 218, 0.3);
-  background-color: rgba(100, 255, 218, 0.05);
+  border: 1px solid var(--color-badge-available-border);
+  background-color: var(--color-badge-available-bg);
 }
 
 .dot-ping {
@@ -363,7 +445,7 @@ h2.interactive-el:hover, h3.interactive-el:hover, h4.interactive-el:hover {
   height: 100%;
   width: 100%;
   border-radius: var(--radius-full);
-  background-color: var(--color-primary);
+  background-color: var(--color-badge-available-dot);
   opacity: 0.75;
   animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
@@ -374,7 +456,7 @@ h2.interactive-el:hover, h3.interactive-el:hover, h4.interactive-el:hover {
   height: 8px;
   width: 8px;
   border-radius: var(--radius-full);
-  background-color: var(--color-primary);
+  background-color: var(--color-badge-available-dot);
 }
 
 @keyframes ping {
@@ -386,23 +468,19 @@ h2.interactive-el:hover, h3.interactive-el:hover, h4.interactive-el:hover {
 
 .staff-line {
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--color-staff-line);
   width: 100%;
   margin: 32px 0;
 }
 
 .ghost-edge {
-  border: 1px solid rgba(13, 28, 50, 0.5);
+  border: 1px solid rgba(13, 28, 50, 0.5); /* Can stay hardcoded for now or use outline */
 }
 
 .project-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 96px;
-}
-
-.project-card {
-  cursor: pointer;
 }
 
 .project-image-container {
@@ -432,7 +510,7 @@ h2.interactive-el:hover, h3.interactive-el:hover, h4.interactive-el:hover {
   image-rendering: -webkit-optimize-contrast;
 }
 
-.project-card:hover img {
+.project-image-container:hover img {
   transform: scale(1.08);
   filter: grayscale(0.3);
 }
@@ -463,6 +541,8 @@ footer {
 .text-on-surface-variant { color: var(--color-on-surface-variant); }
 .text-headline-md { font-size: var(--font-headline-md-size); font-weight: var(--font-headline-md-weight); }
 
+.w-max { width: max-content; }
+.no-underline { text-decoration: none; }
 .flex { display: flex; }
 .flex-col { flex-direction: column; }
 .flex-row { flex-direction: row; }

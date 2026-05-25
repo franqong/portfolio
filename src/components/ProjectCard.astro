@@ -29,7 +29,7 @@ const {
 } = Astro.props;
 ---
 
-<article class="project-card interactive-el">
+<article class="project-card">
   <div
     class="font-label-mono text-on-surface-variant mb-4 flex justify-between items-center"
   >
@@ -216,56 +216,51 @@ const {
 </article>
 
 <style>
-  .no-underline {
-    text-decoration: none;
-  }
-
   .badge-tech,
   .badge-action {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 6px;
-    line-height: 1;
+    height: 24px;
+    padding: 0 10px;
     border-radius: var(--radius-full);
-    transition: all 0.3s ease;
-    border: 1px solid #ffffff0d;
     white-space: nowrap;
-    vertical-align: middle;
   }
 
   .badge-tech {
     padding: 4px 10px;
-    background-color: #00000099;
+    background-color: var(--color-badge-tech-bg);
+    border: 1px solid var(--color-badge-tech-border);
     color: var(--color-on-surface-variant);
   }
 
   .badge-tech:hover {
-    background-color: #03091199;
+    background-color: var(--color-badge-tech-hover-bg);
     color: var(--color-primary);
-    border-color: #c9c6c533;
+    border-color: var(--color-badge-tech-hover-border);
   }
 
   .badge-action {
     padding: 8px 16px;
-    background-color: #161616;
+    background-color: var(--color-badge-action-bg);
+    border: 1px solid var(--color-badge-action-border);
     color: var(--color-on-surface);
   }
 
   .badge-action:hover {
-    background-color: #181818;
+    background-color: var(--color-badge-action-hover-bg);
     border-color: var(--color-accent);
     transform: translateY(-2px);
   }
 
   .badge-text {
-    font-family: "Inter", monospace;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    line-height: 1;
-    display: flex;
-    align-items: center;
+    line-height: 24px;
+    display: block;
   }
 
   .badge-tech .badge-text {
@@ -277,9 +272,8 @@ const {
   }
 
   svg {
-    display: inline-flex;
+    display: block;
     flex-shrink: 0;
-    align-self: center;
-    vertical-align: middle;
   }
+  
 </style>

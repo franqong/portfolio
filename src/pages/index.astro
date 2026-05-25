@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Navbar from "../components/Navbar.astro";
+import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 
@@ -62,7 +62,7 @@ const projects = [
 ---
 
 <BaseLayout title="franqong | Portfolio">
-  <Navbar />
+  <Header />
 
   <main class="container" style="padding-top: 96px; padding-bottom: 64px;">
     <section class="section" id="about">
@@ -84,7 +84,7 @@ const projects = [
         </div>
 
         <div class="flex-1 mt-4">
-          <h2 class="font-label-mono text-primary mb-6 interactive-el">
+          <h2 class="font-label-mono text-primary mb-6">
             Franco Garcia
           </h2>
           <h3 class="font-headline-md mb-8">
@@ -94,7 +94,7 @@ const projects = [
             <a
               href="https://www.linkedin.com/in/franco-garcia/"
               target="_blank"
-              class="nav-link interactive-el flex items-center gap-2"
+              class="nav-link interactive-el flex items-center gap-2 w-max"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +111,7 @@ const projects = [
             <a
               href="https://github.com/franqong"
               target="_blank"
-              class="nav-link interactive-el flex items-center gap-2"
+              class="nav-link interactive-el flex items-center gap-2 w-max"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +135,7 @@ const projects = [
             <a
               href="mailto:garciafranco1998@gmail.com"
               target="_blank"
-              class="nav-link interactive-el flex items-center gap-2"
+              class="nav-link interactive-el flex items-center gap-2 w-max"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
