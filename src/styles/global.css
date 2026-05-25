@@ -410,6 +410,7 @@ a, button, input, textarea, .interactive-el, [role="button"] {
   overflow: hidden;
   border: 1px solid rgba(142, 145, 146, 0.3);
   background-color: var(--color-surface-container-highest);
+  user-select: none;
 }
 
 .avatar img {
@@ -421,6 +422,8 @@ a, button, input, textarea, .interactive-el, [role="button"] {
   backface-visibility: hidden;
   transform-style: preserve-3d;
   will-change: transform;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .avatar:hover img {
