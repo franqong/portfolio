@@ -19,9 +19,9 @@
     </div>
     
     <div class="nav-links font-label-mono">
-      <a href="#experiencia" class="nav-link interactive-el">Experiencia</a>
-      <a href="#proyectos" class="nav-link interactive-el">Proyectos</a>
-      <a href="#sobre-mi" class="nav-link interactive-el">Sobre mí</a>
+      <a href="#experiencia" class="nav-link interactive-el" data-i18n="nav.exp">Experiencia</a>
+      <a href="#proyectos" class="nav-link interactive-el" data-i18n="nav.proj">Proyectos</a>
+      <a href="#sobre-mi" class="nav-link interactive-el" data-i18n="nav.about">Sobre mí</a>
     </div>
     
     <div class="flex items-center gap-4">
@@ -74,8 +74,8 @@
     sunIcon?.classList.add('visible');
   }
 
-  // Initialize language icon based on browser language
-  if (navigator.language && navigator.language.toLowerCase().startsWith('en')) {
+  // Initialize language icon based on html lang attribute
+  if (document.documentElement.lang === 'en') {
     langEsIcon?.classList.remove('visible');
     langEnIcon?.classList.add('visible');
   }
@@ -101,13 +101,19 @@
   });
 
   langToggle?.addEventListener('click', () => {
-    const isEs = langEsIcon?.classList.contains('visible');
+    const isEs = document.documentElement.lang === 'es';
     if (isEs) {
+      document.documentElement.lang = 'en';
+      localStorage.setItem('lang', 'en');
       langEsIcon?.classList.remove('visible');
       langEnIcon?.classList.add('visible');
+      if (window.updateTranslations) window.updateTranslations('en');
     } else {
+      document.documentElement.lang = 'es';
+      localStorage.setItem('lang', 'es');
       langEnIcon?.classList.remove('visible');
       langEsIcon?.classList.add('visible');
+      if (window.updateTranslations) window.updateTranslations('es');
     }
   });
 

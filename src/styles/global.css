@@ -1,6 +1,5 @@
-/* Sonic Minimalism Design System */
+/* Tema Oscuro */
 :root, :root.dark {
-  /* Colors - Base (Dark Theme) */
   --color-surface: #08132a;
   --color-surface-dim: #08132a;
   --color-surface-bright: #2f3952;
@@ -41,12 +40,16 @@
   --color-custom-cursor: white;
   --color-staff-line: rgba(255, 255, 255, 0.05);
   
-  /* Interactive & Badges */
+  /* Interactivos y Badges */
   --color-interactive-hover: #ffffff;
   --hover-brightness: brightness(1.2);
   --color-badge-available-bg: rgba(100, 255, 218, 0.05);
   --color-badge-available-border: rgba(100, 255, 218, 0.3);
   --color-badge-available-dot: #64ffda;
+  
+  --color-badge-unavailable-bg: rgba(255, 255, 255, 0.05);
+  --color-badge-unavailable-border: rgba(255, 255, 255, 0.15);
+  --color-badge-unavailable-dot: #8e9192;
   
   --color-badge-tech-bg: rgba(0, 0, 0, 0.6);
   --color-badge-tech-border: rgba(255, 255, 255, 0.05);
@@ -57,7 +60,7 @@
   --color-badge-action-border: rgba(255, 255, 255, 0.05);
   --color-badge-action-hover-bg: #181818;
 
-  /* Typography Scale */
+  /* Tipografía */
   --font-display-lg-size: 72px;
   --font-display-lg-line-height: 1.1;
   --font-display-lg-weight: 700;
@@ -86,7 +89,7 @@
   --font-label-mono-weight: 500;
   --font-label-mono-ls: 0.1em;
 
-  /* Spacing */
+  /* Espaciado */
   --spacing-unit: 8px;
   --spacing-container-max: 1280px;
   --spacing-gutter: 24px;
@@ -94,7 +97,7 @@
   --spacing-section-gap: 64px;
   --spacing-section-gap-mobile: 32px;
 
-  /* Radii */
+  /* Bordes */
   --radius-sm: 0.125rem;
   --radius-default: 0.25rem;
   --radius-md: 0.375rem;
@@ -104,7 +107,7 @@
 }
 
 :root.light {
-  /* Colors - Base (Light Theme) */
+  /* Tema Claro */
   --color-surface: #e6e9ee;
   --color-surface-dim: #dadde3;
   --color-surface-bright: #f0f3f8;
@@ -139,7 +142,6 @@
   --color-error-container: #ffdad6;
   --color-on-error-container: #410002;
   
-  /* Soft, non-pure white background */
   --color-background: #f0f2f5; 
   --color-gradient-bottom: #e4e7ec;
   --color-on-background: #1a202c;
@@ -148,12 +150,16 @@
   --color-custom-cursor: #1a202c;
   --color-staff-line: rgba(0, 0, 0, 0.08);
 
-  /* Interactive & Badges (Light Theme) */
+  /* Interactivos y Badges */
   --color-interactive-hover: #000000;
   --hover-brightness: none;
-  --color-badge-available-bg: rgba(15, 118, 110, 0.05); /* Emerald 700 */
+  --color-badge-available-bg: rgba(15, 118, 110, 0.05);
   --color-badge-available-border: rgba(15, 118, 110, 0.3);
   --color-badge-available-dot: #0f766e;
+  
+  --color-badge-unavailable-bg: rgba(0, 0, 0, 0.04);
+  --color-badge-unavailable-border: rgba(0, 0, 0, 0.15);
+  --color-badge-unavailable-dot: #4a5568;
   
   --color-badge-tech-bg: rgba(0, 0, 0, 0.04);
   --color-badge-tech-border: rgba(0, 0, 0, 0.1);
@@ -165,7 +171,7 @@
   --color-badge-action-hover-bg: #f8fafc;
 }
 
-/* Global Reset & Base Styles */
+/* Estilos Globales */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -194,7 +200,7 @@ body {
   transition: color 0.5s ease;
 }
 
-/* Noise Effect */
+/* Efecto de Ruido */
 body::before {
   content: "";
   position: fixed;
@@ -209,18 +215,18 @@ body::before {
   z-index: -1;
 }
 
-/* Force hide cursor on everything */
+/* Ocultar Cursor Nativo */
 a, button, input, textarea, .interactive-el, [role="button"] {
   cursor: none !important;
 }
 
-/* Selection */
+/* Selección */
 ::selection {
   background-color: var(--color-accent);
   color: var(--color-background);
 }
 
-/* Custom Cursor */
+/* Cursor Personalizado */
 #custom-cursor {
   position: fixed;
   top: 0;
@@ -259,7 +265,7 @@ a, button, input, textarea, .interactive-el, [role="button"] {
   50% { opacity: 0; }
 }
 
-/* Hover Brightening Effects */
+/* Efectos Hover */
 .interactive-el, a, button {
   transition: color 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
 }
@@ -269,7 +275,7 @@ a, button, input, textarea, .interactive-el, [role="button"] {
   filter: var(--hover-brightness);
 }
 
-/* Layout Utilities */
+/* Utilidades de Diseño */
 .container {
   max-width: var(--spacing-container-max);
   margin: 0 auto;
@@ -288,7 +294,7 @@ a, button, input, textarea, .interactive-el, [role="button"] {
 }
 
 .max-w-4xl {
-  max-width: 896px; /* 56rem */
+  max-width: 896px;
 }
 
 .section {
@@ -302,7 +308,7 @@ a, button, input, textarea, .interactive-el, [role="button"] {
   }
 }
 
-/* Typography Classes */
+/* Tipografía Dinámica */
 .font-display-lg {
   font-family: 'Hanken Grotesk', sans-serif;
   font-size: var(--font-display-lg-mobile-size);
@@ -351,7 +357,7 @@ a, button, input, textarea, .interactive-el, [role="button"] {
   text-transform: uppercase;
 }
 
-/* Components */
+/* Componentes */
 .topbar {
   position: fixed;
   top: 0;
@@ -466,6 +472,25 @@ a, button, input, textarea, .interactive-el, [role="button"] {
   }
 }
 
+.badge-unavailable {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6.5px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-badge-unavailable-border);
+  background-color: var(--color-badge-unavailable-bg);
+}
+
+.dot-neutral {
+  position: relative;
+  display: flex;
+  height: 8px;
+  width: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-badge-unavailable-dot);
+}
+
 .staff-line {
   height: 1px;
   background-color: var(--color-staff-line);
@@ -474,7 +499,7 @@ a, button, input, textarea, .interactive-el, [role="button"] {
 }
 
 .ghost-edge {
-  border: 1px solid rgba(13, 28, 50, 0.5); /* Can stay hardcoded for now or use outline */
+  border: 1px solid rgba(13, 28, 50, 0.5);
 }
 
 .project-grid {
@@ -536,7 +561,7 @@ footer {
   }
 }
 
-/* Utility Classes */
+/* Clases Utilitarias */
 .text-primary { color: var(--color-primary); }
 .text-on-surface-variant { color: var(--color-on-surface-variant); }
 .text-headline-md { font-size: var(--font-headline-md-size); font-weight: var(--font-headline-md-weight); }
@@ -552,6 +577,10 @@ footer {
 .gap-2 { gap: 8px; }
 .gap-4 { gap: 16px; }
 .gap-8 { gap: 32px; }
+.gap-12 { gap: 48px; }
+.gap-16 { gap: 64px; }
+.gap-20 { gap: 80px; }
+.gap-24 { gap: 96px; }
 .mb-2 { margin-bottom: 8px; }
 .mb-4 { margin-bottom: 16px; }
 .mb-6 { margin-bottom: 24px; }
@@ -572,4 +601,5 @@ footer {
   .md\:flex-row { flex-direction: row; }
   .md\:col-span-3 { grid-column: span 3 / span 3; }
   .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .md\:grid-layout { grid-template-columns: 215px 1fr; }
 }

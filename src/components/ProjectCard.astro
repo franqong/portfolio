@@ -6,10 +6,10 @@ interface StackItem {
 
 interface Props {
   number: string;
-  category: string;
-  year: string;
+  categoryKey: string;
+  yearKey: string;
   title: string;
-  description: string;
+  descriptionKey: string;
   image: string;
   github: string;
   preview: string;
@@ -18,10 +18,10 @@ interface Props {
 
 const {
   number,
-  category,
-  year,
+  categoryKey,
+  yearKey,
   title,
-  description,
+  descriptionKey,
   image,
   github,
   preview,
@@ -33,8 +33,8 @@ const {
   <div
     class="font-label-mono text-on-surface-variant mb-4 flex justify-between items-center"
   >
-    <span>{number} / {category}</span>
-    <span style="white-space: nowrap;">{year}</span>
+    <span>{number} / <span data-i18n={categoryKey}></span></span>
+    <span style="white-space: nowrap;" data-i18n={yearKey}></span>
   </div>
   <div class="project-image-container ghost-edge">
     <img src={image} alt={title} />
@@ -161,7 +161,7 @@ const {
     }
   </div>
 
-  <p class="font-body-md text-on-surface-variant mb-6">{description}</p>
+  <p class="font-body-md text-on-surface-variant mb-6" data-i18n={descriptionKey}></p>
 
   <div class="flex gap-4">
     <a
