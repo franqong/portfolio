@@ -598,6 +598,15 @@ footer {
 
 .interactive-el { cursor: pointer; }
 
+/* Transición de Idioma */
+main {
+  transition: opacity 0.7s ease;
+}
+
+body.lang-switching main {
+  opacity: 0;
+}
+
 @media (min-width: 768px) {
   .md\:flex { display: flex; }
   .md\:grid { display: grid; }
