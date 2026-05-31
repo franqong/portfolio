@@ -89,6 +89,7 @@ const { title } = Astro.props;
       const interactives = document.querySelectorAll('.interactive-el, a, button, input, textarea');
 
       document.addEventListener('mousemove', (e) => {
+        if (window.innerWidth < 1024) return;
         if (cursor) {
           cursor.style.left = e.clientX + 'px';
           cursor.style.top = e.clientY + 'px';
