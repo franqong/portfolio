@@ -345,10 +345,16 @@ body::before {
 
 .font-headline-md {
   font-family: 'Hanken Grotesk', sans-serif;
-  font-size: var(--font-headline-md-size);
+  font-size: 24px;
   line-height: var(--font-headline-md-line-height);
   font-weight: var(--font-headline-md-weight);
   letter-spacing: var(--font-headline-md-ls);
+}
+
+@media (min-width: 768px) {
+  .font-headline-md {
+    font-size: var(--font-headline-md-size);
+  }
 }
 
 .font-body-lg {
@@ -524,7 +530,7 @@ body::before {
 
 .project-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 48px;
 }
 
@@ -596,6 +602,8 @@ footer {
 
 .w-full { width: 100%; }
 .w-max { width: max-content; }
+.max-w-full { max-width: 100%; }
+.overflow-hidden { overflow: hidden; }
 .px-4 { padding-left: 16px; padding-right: 16px; }
 .no-underline { text-decoration: none; }
 .flex { display: flex; }
@@ -605,9 +613,14 @@ footer {
 .items-start { align-items: flex-start; }
 .justify-between { justify-content: space-between; }
 .justify-center { justify-content: center; }
+.justify-start { justify-content: flex-start; }
+.flex-wrap { flex-wrap: wrap; }
 .text-center { text-align: center; }
+.text-left { text-align: left; }
+.gap-1 { gap: 4px; }
 .gap-2 { gap: 8px; }
 .gap-4 { gap: 16px; }
+.gap-6 { gap: 24px; }
 .gap-8 { gap: 32px; }
 .gap-12 { gap: 32px; }
 .gap-16 { gap: 40px; }
@@ -653,5 +666,7 @@ body.lang-switching main {
   .md\:grid-layout { grid-template-columns: 215px 1fr; }
   .md\:text-left { text-align: left; }
   .md\:items-start { align-items: flex-start; }
+  .md\:items-center { align-items: center; }
   .md\:justify-start { justify-content: flex-start; }
+  .md\:justify-between { justify-content: space-between; }
 }

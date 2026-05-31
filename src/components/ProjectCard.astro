@@ -29,12 +29,15 @@ const {
 } = Astro.props;
 ---
 
-<article class="project-card flex flex-col items-center md:items-start text-center md:text-left w-full px-4 md:px-0">
+<article class="project-card flex flex-col items-center md:items-start text-center md:text-left w-full max-w-full overflow-hidden px-4 md:px-0">
   <div
-    class="font-label-mono text-on-surface-variant mb-4 flex justify-between items-center w-full"
+    class="font-label-mono text-on-surface-variant mb-4 flex flex-col md:flex-row justify-center md:justify-between items-center w-full gap-2 md:gap-0"
   >
-    <span>{number} / <span data-i18n={categoryKey}></span></span>
-    <span style="white-space: nowrap;" data-i18n={yearKey}></span>
+    <div class="flex items-center justify-center md:justify-start gap-1 flex-wrap text-center md:text-left">
+      <span>{number} /</span>
+      <span data-i18n={categoryKey}></span>
+    </div>
+    <span style="white-space: nowrap;" data-i18n={yearKey} class="opacity-70 md:opacity-100"></span>
   </div>
   <div class="project-image-container ghost-edge w-full">
     <img src={image} alt={title} />
@@ -163,7 +166,7 @@ const {
 
   <p class="font-body-md text-on-surface-variant mb-6 w-full text-center md:text-left" data-i18n={descriptionKey}></p>
 
-  <div class="flex gap-4 justify-center md:justify-start w-full">
+  <div class="flex flex-wrap gap-4 justify-center md:justify-start w-full">
     <a
       href={github}
       target="_blank"
@@ -222,13 +225,12 @@ const {
     align-items: center;
     gap: 6px;
     height: 24px;
-    padding: 0 10px;
     border-radius: var(--radius-full);
     white-space: nowrap;
   }
 
   .badge-tech {
-    padding: 4px 10px;
+    padding: 0 10px;
     background-color: var(--color-badge-tech-bg);
     border: 1px solid var(--color-badge-tech-border);
     color: var(--color-on-surface-variant);
@@ -241,7 +243,7 @@ const {
   }
 
   .badge-action {
-    padding: 8px 16px;
+    padding: 0 16px;
     background-color: var(--color-badge-action-bg);
     border: 1px solid var(--color-badge-action-border);
     color: var(--color-on-surface);
