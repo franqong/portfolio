@@ -17,11 +17,10 @@ const projects = [
     github: "https://github.com/franqong/penta",
     preview: "https://penta-music.vercel.app",
     stack: [
-      { name: "React", icon: "react" },
-      { name: "Node.js", icon: "nodejs" },
-      { name: "CSS", icon: "css" },
-      { name: "Express", icon: "express" },
-      { name: "Prisma", icon: "prisma" },
+      { name: "Rust", icon: "rust" },
+      { name: "Leptos", icon: "leptos" },
+      { name: "WebAssembly", icon: "webassembly" },
+      { name: "Tokio", icon: "tokio" },
       { name: "PostgreSQL", icon: "postgresql" },
     ],
   },
@@ -35,8 +34,8 @@ const projects = [
     github: "https://github.com/franqong/penta-band",
     preview: "#",
     stack: [
-      { name: "C++", icon: "cpp" },
-      { name: "Qt", icon: "qt" },
+      { name: "Rust", icon: "rust" },
+      { name: "GPUI", icon: "gpui" },
     ],
   },
   {
@@ -180,7 +179,7 @@ const projects = [
     <section class="section" id="experiencia">
       <div class="max-w-4xl mx-auto">
         <h2 class="font-label-mono text-primary mb-12 interactive-el text-center md:text-left" data-i18n="exp.title">
-          EXPERIENCIA PROFESIONAL
+          EXPERIENCIA
         </h2>
         <div class="flex flex-col gap-12">
           <div class="flex flex-col items-center md:items-start md:grid md:grid-layout gap-20 text-center md:text-left">
@@ -191,11 +190,16 @@ const projects = [
               <h4
                 class="font-headline-md mb-2"
                 style="font-size: 24px;"
-                data-i18n="hero.role"
+                data-i18n="exp.caudex.role"
               >
-                Desarrollador Web Full Stack
+                Desarrollador de Software
               </h4>
-              <p class="font-body-md text-on-surface-variant">Caudex</p>
+              <p class="font-body-md text-on-surface-variant mb-4" data-i18n="exp.caudex.company">
+                Caudex · Colectivo de Software
+              </p>
+              <p class="font-body-md text-on-surface-variant" style="opacity: 0.8;" data-i18n="exp.caudex.desc">
+                Desarrollo colaborativo de aplicaciones web y de escritorio (C++, Rust, Full Stack). Implementación de buenas prácticas de ingeniería, Git flow, code reviews y arquitectura de software para proyectos en equipo.
+              </p>
             </div>
           </div>
 
@@ -207,8 +211,11 @@ const projects = [
               <h4 class="font-headline-md mb-2" style="font-size: 24px;" data-i18n="exp.sales.role">
                 Ventas & Appointment Setting
               </h4>
-              <p class="font-body-md text-on-surface-variant">
+              <p class="font-body-md text-on-surface-variant mb-4">
                 Firebrand Agency
+              </p>
+              <p class="font-body-md text-on-surface-variant" style="opacity: 0.8;" data-i18n="exp.sales.desc">
+                Contacto con clientes potenciales en el mercado internacional de marketing digital. Gestión de reuniones comerciales y comunicación estratégica cliente-empresa.
               </p>
             </div>
           </div>
